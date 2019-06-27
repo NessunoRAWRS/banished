@@ -1,23 +1,50 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
-})
+	routes: [
+		{
+			path: '/',
+			name: 'dashboard',
+			component: () => import('@/views/DashboardView.vue'),
+		},
+		{
+			path: '/character',
+			name: 'character',
+			component: () => import('./views/CharacterView.vue'),
+		},
+		{
+			path: '/login',
+			name: 'login',
+			component: () => import('./views/LoginView.vue'),
+		},
+		{
+			path: '/logout',
+			name: 'logout',
+			component: () => import('./views/LoginView.vue'),
+		},
+		{
+			path: '/settings',
+			name: 'settings',
+			component: () => import('./views/SettingsView.vue'),
+		},
+		{
+			path: '/faq',
+			name: 'faq',
+			component: () => import('./views/FaqView.vue'),
+		},
+	],
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition;
+		}
+
+		if (to.hash) {
+			return { selector: to.hash };
+		}
+
+		return { x: 0, y: 0 };
+	},
+});

@@ -1,0 +1,138 @@
+// Forms
+// Usage: 
+// <div class="form-group">
+//     <label for="control">Control title</label>
+//     <input type="text" class="form-field" name="control">
+//     <small>This will be shown under the control</small>
+// </div>
+.form-group {
+    margin-bottom: 1rem;
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    small {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #c2d4c6 !important;
+    }
+
+    .form-field {
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: $form-field-padding;
+        background-color: $background;
+        background-clip: padding-box;
+        font-size: 1rem;
+        color: #e0f0e4;
+        line-height: 1.5em;
+        border: 1px solid #6a8a70;
+        border-radius: $default-border-radius;
+        transition: border-color 0.15s ease-in-out;
+
+        &:hover,
+        &:focus {
+            border-color: #7eda84;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 255, 123, 0.35);
+        }
+
+        &:disabled {
+            background-color: rgba(255, 255, 255, 0.04);
+            color: #68786c;
+            border: 1px solid #68786c;
+            cursor: not-allowed;
+        }
+
+        &::placeholder {
+            color: #68786c;
+        }
+    }
+
+    .required {
+        border: 1px solid #ce3a3a;
+        box-shadow: 0 0 0 .2rem rgba(206, 58, 58, 0.35);
+    }
+}
+
+// Buttons
+// Base styling plus coloring.
+// Usage: <a href="#" class="btn btn-primary">
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: $form-field-padding;
+    margin-right: .45rem;
+    font-size: 1rem;
+    line-height: 1.5em;
+    border-radius: $default-border-radius;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: $main-font-color;
+    background-color: $primary;
+    border-color: $primary;
+
+    &:hover {
+        background-color: $primary-hover;
+    }
+}
+
+.btn-secondary {
+    color: $main-font-color;
+    background-color: $secondary;
+    border-color: $secondary;
+
+    &:hover {
+        background-color: $secondary-hover;
+    }
+}
+
+// Badge that shows a popup message
+// Usage: <span class="help-badge">This is the message on the popup</span>
+.help-badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    height: 0.9rem;
+    width: 0.9rem;
+    background-color: $primary;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        background-color: #fff;
+        color: $primary;
+        transform: scale(1.5);
+    }
+
+    &:hover:after {
+        color: $primary;
+        position: absolute;
+        display: block;
+        min-width: 130px;
+        padding: 0.1rem;
+        left: 1rem;
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: $default-border-radius;
+        content: attr(data-text);
+        font-size: 0.56rem;
+    }
+}
